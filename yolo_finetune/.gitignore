@@ -1,0 +1,7 @@
+runs/
+*.pt
+
+# 데이터 실물은 커밋하지 않고 폴더 구조만 유지한다
+dataset/**
+!dataset/**/
+!dataset/**/.gitkeep

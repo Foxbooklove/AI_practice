@@ -1,0 +1,12 @@
+# YOLO 데이터셋 정의 (placeholder)
+# path 기준으로 train/val 경로가 해석된다. 이미지 폴더만 적으면
+# ultralytics가 같은 경로의 images -> labels 치환으로 라벨을 찾는다.
+path: ./dataset
+train: images/train
+val: images/val
+
+# 재학습할 커스텀 클래스. 인덱스가 라벨 파일의 class_id와 일치해야 한다.
+names:
+  0: scratch
+  1: dent
+  2: crack
