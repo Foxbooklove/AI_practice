@@ -19,3 +19,7 @@ results/
 *.m4a
 *.mp3
 *.wav
+
+# rag 인덱스는 build_index.py로 다시 만든다
+rag/index.npz
+rag/index.json

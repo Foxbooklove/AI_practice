@@ -10,6 +10,7 @@
 | [anomaly_detection](anomaly_detection) | 정상 이미지만으로 불량 탐지 | `anomalib` |
 | [sound_to_text](sound_to_text) | 음성 전사 + 타임스탬프 | `faster-whisper` |
 | [parsing](parsing) | PDF를 구조 보존 마크다운으로 | `docling` |
+| [rag](rag) | 파싱한 문서를 임베딩해 근거 기반 질의응답 | `ollama`, `numpy` |
 
 ```
 pip install -r requirements.txt
@@ -31,5 +32,20 @@ pip install -r requirements.txt
 | `ollama_practice/image.py` | `receipt.png` |
 | `sound_to_text/transcribe.py` | `meeting.m4a` |
 | `parsing/docling_pdf.py` | `paper.pdf` |
+| `rag/build_index.py` | `parsing/*.md` — `docling_pdf.py`의 출력 |
 | `anomaly_detection/detect.py` | `data/good/*`, `data/bad/*` |
 | `yolo_finetune/train.py` | `dataset/` — [README](yolo_finetune/README.md) 참고 |
+
+## rag
+
+`parsing`이 만든 마크다운을 실제로 써먹는 부분. 벡터 DB 없이 numpy 배열 하나로 끝낸다.
+
+```
+python parsing/docling_pdf.py     # paper.pdf -> paper.md
+python rag/build_index.py         # 청크 분할 + 임베딩 -> index.npz
+python rag/ask.py "증착 온도가 수율에 미치는 영향은?"
+```
+
+- 청크는 마크다운 제목 경계를 먼저 지키고, 한 절이 800자를 넘으면 100자씩 겹쳐 자른다. 겹침이 없으면 경계에 걸린 문장이 양쪽 모두에서 의미를 잃는다.
+- 임베딩을 L2 정규화해 저장하므로 검색은 내적 한 번(`VECS @ q`)이면 끝난다.
+- 답변에는 근거 번호와 유사도가 함께 출력된다. 엉뚱한 청크를 물어왔는지 바로 보여야 청킹 전략을 고칠 수 있다.

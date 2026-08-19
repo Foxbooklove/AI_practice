@@ -17,3 +17,6 @@ faster-whisper
 
 # --- parsing ---
 docling
+
+# --- rag ---
+numpy
