@@ -1,0 +1,6 @@
+lot_id,process,temperature_c,pressure_torr,yield_pct
+L-1001,SiGe,850,10,96.4
+L-1002,SiGe,850,50,88.1
+L-1003,SiN,700,5,94.7
+L-1004,SiN,700,5,95.2
+L-1005,SiGe,880,10,91.8

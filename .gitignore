@@ -1,0 +1,21 @@
+__pycache__/
+*.py[cod]
+.venv/
+venv/
+.ipynb_checkpoints/
+.env
+
+# 모델 가중치와 실행 산출물
+*.pt
+*.onnx
+runs/
+results/
+
+# 연습용 입력 샘플 (직접 준비해서 넣는 파일)
+*.jpg
+*.jpeg
+*.png
+*.pdf
+*.m4a
+*.mp3
+*.wav

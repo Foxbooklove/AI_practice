@@ -13,14 +13,17 @@ def read_head(filename: str, n: int = 5) -> str:
     path = BASE / filename
     if not path.is_file():
         return f"error: {filename} 없음"
-    return "".join(path.open(encoding="utf-8").readlines()[:n])
+    with path.open(encoding="utf-8") as f:
+        return "".join(line for _, line in zip(range(n), f))
 
 def count_rows(filename: str) -> str:
     """csv 파일의 헤더를 제외한 데이터 행 수를 반환한다."""
     path = BASE / filename
     if not path.is_file():
         return f"error: {filename} 없음"
-    return str(max(0, sum(1 for _ in path.open(encoding="utf-8")) - 1))
+    with path.open(encoding="utf-8") as f:
+        rows = sum(1 for line in f if line.strip())   # 빈 줄은 세지 않는다
+    return str(max(0, rows - 1))
 
 TOOLS = {f.__name__: f for f in (list_files, read_head, count_rows)}
 
