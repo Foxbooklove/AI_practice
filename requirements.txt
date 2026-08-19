@@ -1,0 +1,19 @@
+# 폴더별로 필요한 것만 골라 설치해도 된다.
+# anomalib과 ultralytics는 torch/torchvision 범위를 각자 고정하므로
+# 충돌이 나면 anomaly_detection만 별도 venv로 분리하는 게 편하다.
+
+# --- ollama_practice ---
+ollama
+pydantic
+
+# --- image_detect, yolo_finetune ---
+ultralytics
+
+# --- anomaly_detection ---
+anomalib
+
+# --- sound_to_text ---
+faster-whisper
+
+# --- parsing ---
+docling

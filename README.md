@@ -11,6 +11,10 @@
 | [sound_to_text](sound_to_text) | 음성 전사 + 타임스탬프 | `faster-whisper` |
 | [parsing](parsing) | PDF를 구조 보존 마크다운으로 | `docling` |
 
+```
+pip install -r requirements.txt
+```
+
 ## ollama_practice
 
 - `text.py` — 문장에서 실험 조건을 여러 건 추출. Pydantic 스키마를 `format=`으로 넘겨 JSON을 강제한다.
